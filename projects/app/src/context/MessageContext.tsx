@@ -7,6 +7,7 @@ type MessageObject = {
   sikao: number;
 
   selectedValue2: string;
+  selectedValue3: string;
 };
 
 // 2. 定义Context类型
@@ -25,7 +26,8 @@ export const MessageProvider = ({ children }: { children: React.ReactNode }) => 
     deep: 0,
     sikao: 0,
     selectedValue: '111111',
-    selectedValue2: '666'
+    selectedValue2: '666',
+   selectedValue3: '1234'
   });
 
   return (

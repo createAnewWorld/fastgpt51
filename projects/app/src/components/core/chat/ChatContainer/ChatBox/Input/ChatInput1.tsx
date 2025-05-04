@@ -104,14 +104,7 @@ const ChatInput = ({
   ]);
 
   const [repository2, setRepository2] = useState([
-    {
-      _id: '555',
-      name: 'word生成'
-    },
-    {
-      _id: '666',
-      name: 'PPT生成'
-    },
+
     {
       _id: '777',
       name: 'AI智能出题'
@@ -122,12 +115,27 @@ const ChatInput = ({
     }
   ]);
 
+
+  const [repository3, setRepository3] = useState([
+    {
+      _id: '222',
+      name: 'word生成'
+    },
+    {
+      _id: '333',
+      name: 'PPT生成'
+    },
+  
+  ]);
+
   const { message, setMessage } = useMessageContext();
 
   // 知识库下拉框选择的值
   const [selectedValue, setSelectedValue] = useState('111111');
 
   const [selectedValue2, setSelectedValue2] = useState('666');
+
+  const [selectedValue3, setSelectedValue3] = useState('111');
   useEffect(() => {
     async function fetchgetUser() {
       try {
@@ -180,14 +188,15 @@ const ChatInput = ({
 
   useEffect(() => {
     send(); // flag 变化后自动触发
-  }, [flag, selectedValue, flag2, selectedValue2]);
+  }, [flag, selectedValue, flag2, selectedValue2, selectedValue3]);
 
   const send = () => {
     setMessage({
       deep: flag,
       sikao: flag2,
       selectedValue,
-      selectedValue2
+      selectedValue2,
+      selectedValue3
     });
   };
 
@@ -482,38 +491,7 @@ const ChatInput = ({
                   <span>深度思考</span>
                 </Flex>
               </MyTooltip>
-              {/* <MyTooltip label="联网搜索">
-                <Flex
-                  p="4px"
-                  h="35px"
-                  w="90px" // 宽度与Select一致
-                  fontSize="12px"
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="center"
-                  cursor="pointer"
-                  borderRadius="10px" // 圆角与Select一致
-                  border={`1px solid ${isActive2 ? '#E9E9E9' : '#DAEEFF'}`}
-                  bg={isActive2 ? '#fff' : '#DAEEFF'}
-                  color={isActive2 ? '#5E5E5E' : '#0285FF'}
-                  onClick={() => {
-                    setIsActive2(!isActive2);
-                    handleToggleVariable2();
-                    setFlag2(flag2 == 0 ? 1 : 0);
-                  }}
-                  _hover={{
-                    bg: 'rgba(0, 0, 0, 0.04)' // 悬停效果增强一致性
-                  }}
-                >
-                  <MyIcon
-                    name="common/deep"
-                    w="18px"
-                    mr="3px"
-                    color={isActive ? '#5E5E5E' : '#0285FF'}
-                  />
-                  <span>联网搜索</span>
-                </Flex>
-              </MyTooltip> */}
+           
               {/* 知识库Select - 移除默认阴影，样式与按钮统一 */}
               <MyTooltip label="知识库">
                 <Select
@@ -627,6 +605,67 @@ const ChatInput = ({
                   <option value="option3">Option 3</option> */}
 
                   {repository2.map((item) => {
+                    return (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
+                </Select>
+              </MyTooltip>
+
+              <MyTooltip label="格式">
+                <Select
+                  placeholder="请选择格式"
+                  icon={
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="12px" // 调整为更小的尺寸（原16px）
+                      height="12px"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#ccc"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M7 10l5 5 5-5" // 微调路径使小尺寸下更协调
+                      />
+                    </svg>
+                  }
+                  // defaultValue={repository[0].name}
+                  w="130px"
+                  h="35px"
+                  style={{ textAlign: 'center' }}
+                  fontSize="12px"
+                  borderRadius="10px" // 显式设置圆角
+                  border="1px solid #E9E9E9"
+                  transform="translateY(0.5px)"
+                  sx={{
+                    boxShadow: 'none !important', // 强制移除阴影
+                    _focus: {
+                      borderColor: '#E9E9E9', // 聚焦时保持边框颜色一致
+                      boxShadow: 'none'
+                    }
+                  }}
+                  _hover={{
+                    bg: 'rgba(0, 0, 0, 0.04)' // 悬停效果增强一致性
+                  }}
+                  onChange={(e) => {
+                    if (e.target.value) {
+                      // 正常值
+                      setSelectedValue3(e.target.value);
+                    } else {
+                      // 默认值
+                      setSelectedValue3('111111');
+                    }
+                  }}
+                >
+                  {/* <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option> */}
+
+                  {repository3.map((item) => {
                     return (
                       <option key={item._id} value={item._id}>
                         {item.name}

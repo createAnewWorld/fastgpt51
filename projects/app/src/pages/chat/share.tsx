@@ -109,7 +109,7 @@ const OutLink = (props: Props) => {
     }
   };
 
-  const [customVar1, setCustomVar1] = useState({ deep: 0, selectedValue: '111111' });
+  const [customVar1, setCustomVar1] = useState({ deep: 0, selectedValue: '111111',selectedValue2: '3333' ,selectedValue3: '1234'});
   // 处理点击事件，切换值
   // const handleToggleVariable = () => {
   //   setCustomVar1((prev) => (prev === 1 ? 2 : 1));
@@ -229,7 +229,7 @@ const OutLink = (props: Props) => {
             ...customVariables,
             customVariable1: customVar1.deep, // 添加自定义变量到请求体
             datasets: customVar1.selectedValue || 111111,
-            sikao: customVar1.sikao,
+            format: customVar1.selectedValue3,
             aigonju: customVar1.selectedValue2
           },
           responseChatItemId,
