@@ -133,7 +133,7 @@ const ChatInput = ({
   // 知识库下拉框选择的值
   const [selectedValue, setSelectedValue] = useState('111111');
 
-  const [selectedValue2, setSelectedValue2] = useState('666');
+  const [selectedValue2, setSelectedValue2] = useState('111111');
 
   const [selectedValue3, setSelectedValue3] = useState('111');
   useEffect(() => {
@@ -657,7 +657,7 @@ const ChatInput = ({
                       setSelectedValue3(e.target.value);
                     } else {
                       // 默认值
-                      setSelectedValue3('111111');
+                      setSelectedValue3('111');
                     }
                   }}
                 >
